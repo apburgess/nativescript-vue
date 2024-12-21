@@ -83,8 +83,10 @@ export function $navigateTo<P = any>(
 
         // if we are reloading, don't unmount the view, as the reload will unmount/remount it.
         if (!isReloading) {
-          view.unmount();
-          view = null;
+          if (view != null) {
+            view.unmount();
+            view = null;
+          }
         }
       };
     };
